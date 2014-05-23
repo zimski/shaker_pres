@@ -44,14 +44,16 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
       <ul>
-        <li> L’administration système / DEVOPS></li>
+        <li>L’administration système </li>
         <li>Besoin ? Solution : l'automatisation </li>
-        <li>Shaker </li>
+        <li>Le projet Shaker </li>
+        <ul>
         <li>Le langage Shaker </li>
         <li>Web-app Shaker</li>
-        <li>Shaker et ses modules. </li>
-        <li>SHAKER demain ! </li>
+        <li>Shaker et ses modules </li>
+        <li>Shaker demain ! </li>
         <li>Démonstration</li>
+        </ul>
       </ul>
     </article>
   </slide>
@@ -72,7 +74,7 @@ URL: https://code.google.com/p/io-2012-slides
   <slide>
     <hgroup>
       <h2> L'automatisation, notre sauveur ! </h2>
-      <h3> ..... mais on veut plus ! </h3>
+      <h3> ..... mais on en veut plus ! </h3>
     </hgroup>
     <article>
       <ul>
@@ -93,6 +95,7 @@ URL: https://code.google.com/p/io-2012-slides
         <li>Un langage modulaire et puissant</li>
         <li>Une webapp opérationnelle et complète</li>
         <li>S'adapte et évolue avec les besoins rapidement</li>
+        <li>Make it easy ! </li>
       </ul>
     </article>
   </slide>
@@ -108,7 +111,7 @@ URL: https://code.google.com/p/io-2012-slides
 <slide>
     <hgroup>
       <h2> Shaker </h2>
-      <h3> il aime le ssh !</h3>
+      <h3> le coeur !</h3>
     </hgroup>
     <article class="flexbox vcenter ">
         <img src="images/shaker2.png" class="reflect" alt="Description" title="Description">
@@ -151,7 +154,7 @@ script:
       <h3>Fichier Script</h3>
     </hgroup>
     <article>
-    <ul> <li>Il represente nos instructions à exécuter</li> <li>Le fichier est dabord mis en forme (template) avant d'être exécuté(Mako) </li></ul>
+    <ul> <li>Il représente nos instructions à exécuter</li> <li>Le fichier est dabord mis en forme (template) avant d'être exécuté (Mako) </li></ul>
       <pre class="prettyprint" data-lang="bash">
 apt-get update
 apt-get install curl
@@ -175,7 +178,7 @@ echo "helloo"
       <h3>Les modules</h3>
     </hgroup>
     <article>
-    <ul> <li>Un outil puissant et facile à implémenter.</li></ul>
+    <ul> <li>Un outil puissant et facile à implémenter</li></ul>
       <pre class="prettyprint" data-lang="bash (script)">
 hostname ${env['global_var']['hostname']}
 ## send hosts file 
@@ -289,10 +292,10 @@ CONF:
     <article>
       <ul>
         <li>Lancement de taches parallèles ou séquentielles (au choix)</li>
-        <li>Flux en temps réel des retour des commandes exécutées affichées dans la console (web app)</li>
+        <li>Flux en temps réel affiché dans la console (web app)</li>
         <li>Éditeur integré du code Shaker (web app)</li>
         <li>Exécution et débogage du code (web app) </li>
-        <li>Moteur de création de plugin intégré (web app). </li>
+        <li>Moteur de création de plugin intégré (web app)</li>
       </ul>
     </article>
   </slide>
@@ -306,8 +309,8 @@ CONF:
         <li>Développement d'un dépôt public de plugins/modules (partage et échange)</li>
         <li>Mode multi-serveurs</li>
         <li>Intégration avec des modules de monitoring </li> 
-        <li><b>Prise de décision automatique lors d'un événement précis. (administration autonome)</b>  </li>
-        <li>Toute idée est la bienvenue.</li>
+        <li><b>Prise de décision automatique (administration autonome)</b>  </li>
+        <li>Toute idée est la bienvenue</li>
       </ul>
     </article>
   </slide>
