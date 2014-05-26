@@ -139,7 +139,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h3>Fichier d'environnement</h3>
     </hgroup>
     <article>
-    <ul> <li>Il représente nos variables dont on aura besoin</li> <li>Le fichier de sortie doit être au format YAML (moteur de temlate mako) </li></ul>
+    <ul> <li>Il représente nos variables dont on aura besoin</li> <li>Le fichier de sortie doit être au format YAML (moteur de template mako) </li></ul>
       <pre class="prettyprint" data-lang="python">
 <%
   import redis
@@ -229,7 +229,7 @@ $$ rbox.cmd_if COND
 DCM:
     - dcm4chee_exist
 COND:
-    if : dcm4chee_exist == 0
+    if: dcm4chee_exist == 0
     then: |
         $$ sk_ssh.expect CMD_dpkg
     else: |
@@ -303,7 +303,7 @@ CONF:
     </hgroup>
     <article>
       <ul>
-        <li>Lancement de taches parallèles ou séquentielles (au choix)</li>
+        <li>Lancement de taches parallèles ou séquentielles</li>
         <li> Web app:</li>
         <ul>
             <li>Flux en temps réel affiché dans la console</li>
@@ -323,7 +323,7 @@ CONF:
       <ul>
         <li>Développement d'un dépôt public de plugins/modules (partage et échange)</li>
         <li>Mode multi-serveurs</li>
-        <li>Intégration d'autre mode de communication 0MQ.</li>
+        <li>Intégration d'autre mode de communication ZERO-MQ.</li>
         <li>Support de clients Saltstack, Puppet, Chef, ...ect</li>
         <li>Intégration avec des modules de monitoring </li> 
         <li><b>Prise de décision automatique (administration autonome)</b>  </li>
