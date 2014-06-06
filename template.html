@@ -45,13 +45,11 @@ URL: https://code.google.com/p/io-2012-slides
     <article>
       <ul>
         <li>L’administration système </li>
-        <li>Besoin ? Solution : l'automatisation </li>
-        <li>Le projet Shaker </li>
-        <ul>
-        <li>Le langage Shaker </li>
-        <li>Web-app Shaker</li>
-        <li>Shaker et ses modules </li>
-        <li>Shaker demain ! </li>
+        <li>L'automatisation </li>
+        <li>SALTSTACK </li>
+        <li>VM vs CT </li>
+        <li>Shaker</li>
+        <li>Let's automate ! </li>
         <li>Démonstration</li>
         </ul>
       </ul>
@@ -77,54 +75,270 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
       <ul>
-        <li>Une sorte de recette réservée à une tache précise </li>
-        <li>Une IHM intuitive <li>
-        <li>Un langage puissant, facile et modulable</li>
-        <li>Aucun prérequis sauf un interpréteur de commandes</li>
+        <li>Des recettes à tout faire </li>
+        <li>Une maintenance à faible coût et évolutif </li>
+        <li>Une IHM, ça aide !<li>
+        <li>Rapide et sûr</li>
 
       </ul>
     </article>
   </slide>
 <slide>
     <hgroup>
-      <h2> Shaker </h2>
+      <h2> SALTSTACK </h2>
     </hgroup>
     <article>
       <ul>
-        <li>Un langage modulaire et puissant</li>
-        <li>Une webapp opérationnelle et complète</li>
-        <li>S'adapte et évolue avec les besoins rapidement</li>
-        <li>Make it easy ! </li>
+        <li></li>
+        <li>Une approche plus simple que ses concurrents</li>
+        <li>Complètement gratuit et open source</li>
+        <li>Communauté active et agréable</li>
       </ul>
+  <img src="images/saltstack.png" class="reflect" alt="Description" style="width:300px;height:180px" title="Description">
     </article>
   </slide>
 <slide>
     <hgroup>
-      <h2> Shaker </h2>
-      <h3> il aime le ssh !</h3>
+      <h2>SALTSTACK</h2>
+      <h3> Technologies</h3>
     </hgroup>
-    <article class="flexbox vcenter ">
-        <img src="images/shaker1.png" class="reflect" alt="Description" title="Description">
+    <article class="flexbox">
+       <ul>
+        <li>Python</li>
+        <li>0MQ</li>
+        <li>M2Crypto</li>
+        <li>MessagePack</li>
+      </ul>
+  <img src="images/python.png" class="reflect" alt="Description" style="width:300px;height:100px" title="Description">
+  <img src="images/0mq.gif" class="reflect" alt="Description" style="width:300px;height:100px" title="Description">
     </article>
   </slide>
 <slide>
     <hgroup>
-      <h2> Shaker </h2>
-      <h3> le coeur !</h3>
+      <h2>SALTSTACK</h2>
+      <h3>Pour vos serveurs mais aussi pour le reste !</h3>
     </hgroup>
     <article class="flexbox vcenter ">
-        <img src="images/shaker2.png" class="reflect" alt="Description" title="Description">
+        <img src="images/saltstack infra.png" class="reflect" alt="Description" title="Description" style="margin-bottom:150px">
     </article>
   </slide>
 <slide>
     <hgroup>
-      <h2> Shaker WEB APP</h2>
-      <h3> Une interface pour tout le monde</h3>
+      <h2>SALTSTACK</h2>
+      <h3>Les minions et les grains</h3>
     </hgroup>
     <article class="flexbox vcenter ">
-        <img src="images/shaker3.png" class="reflect" alt="Description" title="Description">
+    <pre class="prettyprint" data-lang="bash">
+root@Salt-Master:~/sgod# salt 'nahla' grains.items
+nahla:
+  biosreleasedate: 01/01/2011
+  biosversion: Bochs
+  cpu_model: Common KVM processor
+  cpuarch: x86_64
+  defaultencoding: UTF-8
+  defaultlanguage: en_US
+  domain: 
+  fqdn: nahla
+  fqdn_ip4:
+      127.0.1.1
+...
+    </pre>
+    </article>
+</slide>
+
+<slide>
+    <hgroup>
+      <h2>SALTSTACK</h2>
+      <h3>Les recettes</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+    <pre class="prettyprint" data-lang="apache.sls">
+apache:
+  pkg:
+    - <b>installed</b>
+  service:
+    - <b>running</b>
+    - watch:
+      - pkg: apache
+      - file: /etc/httpd/conf/httpd.conf
+      - user: apache
+  
+<b>/etc/httpd/conf/httpd.conf:</b>
+  file.managed:
+    - source: salt://apache/httpd.conf
+    - user: root
+    - group: root
+    - mode: 644
+   </pre>
+    </article>
+</slide>
+
+<slide>
+    <hgroup>
+      <h2>SALTSTACK</h2>
+      <h3>Les recettes épicées aux grains</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+    <pre class="prettyprint" data-lang="apache.sls">
+apache:
+  pkg.installed:
+  <b>{% if grains['os'] == 'RedHat'%}</b>
+    - name: httpd
+  <b>{% elif grains['os'] == 'Ubuntu' %}</b>
+    - name: apache2
+  {% endif %}
+  </pre>
+    </article>
+</slide>
+
+<slide>
+    <hgroup>
+      <h2>SALTSTACK</h2>
+      <h3>Mécanisme</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+   <img src="images/saltstack_grains.png" class="reflect" alt="Description" title="Description" style="margin-bottom:150px">
+      </article>
+</slide>
+
+
+
+<slide>
+    <hgroup>
+      <h2>SALTSTACK</h2>
+      <h3>Pillars... Top Secret !</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+    <pre class="prettyprint" data-lang="pillar.sls">
+conf_data:
+  root_pass: "securePassw0rd!!%"
+  root_email: contact@boite.fr
+  Blabla: foufou
+ </pre>
+
+<pre class="prettyprint" data-lang="conf_contact.sls">
+Config:
+ File.replace:
+  - name: /etc/config
+  - pattern: "contact :*"
+  - replace: "contact : <b>{% pillar['conf_data']['root_email'] %}</b>"
+</pre>
+    </article>
+</slide>
+
+<slide>
+    <hgroup>
+      <h2>SALTSTACK</h2>
+      <h3>Mécanisme</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+   <img src="images/saltstack_grains_pillars.png" class="reflect" alt="Description" title="Description" style="margin-bottom:150px">
+      </article>
+</slide>
+
+<slide>
+    <hgroup>
+      <h2>VM & Cantainer</h2>
+    </hgroup>
+    <article class="flexbox vcenter ">
+        <img src="images/ct_vm.jpg" class="reflect" alt="Description" title="Description" style="margin-bottom:100px">
     </article>
   </slide>
+
+
+<slide>
+    <hgroup>
+      <h2>VM & Cantainer</h2>
+      <h3>Performance réseaux</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+        <img src="images/vmvsct_net.png" class="reflect" alt="Description" title="Description" style="margin-bottom:100px">
+    </article>
+  </slide>
+
+<slide>
+    <hgroup>
+      <h2>VM & Cantainer</h2>
+      <h3>Temps de latence</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+        <img src="images/vmvsct_response.png" class="reflect" alt="Description" title="Description" style="margin-bottom:100px">
+    </article>
+  </slide>
+
+
+<slide>
+    <hgroup>
+      <h2>Shaker</h2>
+      <h3>Un bon ami à SALTSTACK</h3>
+    </hgroup>
+    <article class="flexbox">
+        <ul>
+        <li>Open source</li>
+        <li>Un couteau suisse</li>
+        <li>IHM</li>
+        <li>Modulaire et évolutif</li>
+      </ul>
+        <img src="images/suisse.png" class="reflect" alt="Description" title="Description">
+    </article>
+  </slide>
+
+
+
+
+
+
+
+<slide>
+    <hgroup>
+      <h2>Shaker</h2>
+      <h3>Et il aime le ssh</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+        <img src="images/shaker1.png" class="reflect" alt="Description" title="Description"style="margin-bottom:150px">
+    </article>
+  </slide>
+
+
+<slide>
+    <hgroup>
+      <h2>Shaker</h2>
+      <h3>Le coeur>
+    </hgroup>
+    <article class="flexbox vcenter ">
+        <img src="images/shaker2.png" class="reflect" alt="Description" title="Description"style="margin-bottom:150px">
+    </article>
+  </slide>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<slide>
+    <hgroup>
+      <h2>SALTSTACK</h2>
+      <h3>La web application</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+        <img src="images/shaker3.png" class="reflect" alt="Description" title="Description"style="margin-bottom:150px">
+    </article>
+  </slide>
+
 <slide class="fill nobackground" style="background-image: url(images/shaker_list.png); background-size: 100% 65%">
     <hgroup>
     </hgroup>
@@ -147,9 +361,9 @@ URL: https://code.google.com/p/io-2012-slides
   data = r.hgetall('DB:Manage_vm:'+argv[0])
 %>
 script:
-    host  : ${data['ip']}
-    user  : root
-    password  : ${data['pass']}
+    host: ${data['ip']}
+    user: root
+    password: ${data['pass']}
 </pre>
     </article>
 
@@ -199,12 +413,12 @@ hostname ${env['global_var']['hostname']}
       <pre class="prettyprint" data-lang="yaml (ENV)">
 <b>file_hosts:
     host:
-        ip      : ${data['ip']}
-        username    : root
+        ip: ${data['ip']}
+        username: root
         password: ${data['pass']}
     template:
-        file_name  : /root/sgod/config_files/hosts
-        dest_path  : "/etc/hosts"
+        file_name: /root/sgod/config_files/hosts
+        dest_path: "/etc/hosts"
         machine_name: ${data['host']}</b>
 </pre>
  
@@ -325,7 +539,7 @@ CONF:
 <slide>
     <hgroup>
       <h2> Shaker </h2>
-      <h3> et plus encore</h3> 
+      <h3> Et plus encore</h3> 
     </hgroup>
     <article>
       <ul>
@@ -343,20 +557,51 @@ CONF:
 <slide>
     <hgroup>
       <h2> Shaker </h2>
-      <h3> et demain ...</h3>
+      <h3> Et demain ...</h3>
     </hgroup>
     <article>
       <ul>
         <li>Développement d'un dépôt public de plugins/modules (partage et échange)</li>
         <li>Mode multi-serveurs</li>
         <li>Intégration d'autre mode de communication ZERO-MQ.</li>
-        <li>Support de clients Saltstack, Puppet, Chef, ...ect</li>
+        <li>Support de clients Saltstack, Puppet, Chef...</li>
         <li>Intégration avec des modules de monitoring </li> 
         <li><b>Prise de décision automatique (administration autonome)</b>  </li>
         <li>Toute idée est la bienvenue</li>
       </ul>
     </article>
   </slide>
+
+
+<slide>
+    <hgroup>
+      <h2>Automation</h2>
+      <h3>Scénario 1</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+        <img src="images/automate1.png" class="reflect" alt="Description" title="Description"style="margin-bottom:150px">
+    </article>
+  </slide>
+
+
+
+<slide>
+    <hgroup>
+      <h2>Automation</h2>
+      <h3>Scénario 2</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+        <img src="images/automate2.png" class="reflect" alt="Description" title="Description"style="margin-bottom:150px">
+    </article>
+  </slide>
+
+
+
+
+
+
+
+
 <slide class="fill nobackground" style="background-image: url(images/shaker_logo.jpg)">
     <hgroup>
     </hgroup>
