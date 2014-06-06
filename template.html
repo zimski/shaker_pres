@@ -85,6 +85,16 @@ URL: https://code.google.com/p/io-2012-slides
   </slide>
 <slide>
     <hgroup>
+      <h2>Automatisation</h2>
+      <h3>IRCAD</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+        <img src="images/plan_automate.png" class="reflect" alt="Description" title="Description" style="position:relative;top:-50px">
+    </article>
+  </slide>
+<slide>
+
+    <hgroup>
       <h2> SALTSTACK </h2>
     </hgroup>
     <article>
@@ -495,47 +505,6 @@ COND:
     </article>
 
 </slide>
-<slide>
-    <hgroup>
-      <h2> Le langage Shaker</h2>
-      <h3> Problématique</h3>
-    </hgroup>
-    <p>Configuration de port de switch routeur</p>
-    <article class="flexbox vcenter ">
-        <img src="images/shaker_network.png" class="reflect" alt="Description" title="Description" style="margin-bottom:150px">
-    </article>
-  </slide>
-
-
-<slide>
-    <hgroup>
-      <h2>Le langage Shaker</h2>
-      <h3>Les modules</h3>
-      <h4>Configuration de switch/routeur</h4>
-    </hgroup>
-    <article>
-      <pre class="prettyprint" data-lang="bash (script)">
-<b>$$ netDevice.push CONF</b>
-</pre>
-      <pre class="prettyprint" data-lang="yaml (ENV)">
-CONF:
-    user: ${argv[1]}
-    password: ${argv[2]}
-    hostname: 192.168.0.100
-    conf: |
-        conf t
-        interface ${data['interface']}
-    % if VLAN_trunk :
-        switchport trunk encapsulation dot1q
-        switchport trunk allowed vlan ${data['vlans']}
-        switchport mode trunk
-    %endif
-</pre>
- 
-    </article>
-
-</slide>
-
 <slide>
     <hgroup>
       <h2> Shaker </h2>
