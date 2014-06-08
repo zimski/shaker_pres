@@ -46,9 +46,11 @@ URL: https://code.google.com/p/io-2012-slides
       <ul>
         <li>L’administration système </li>
         <li>L'automatisation </li>
+        <li>Cloud privé </li>
         <li>SALTSTACK </li>
-        <li>VM vs CT </li>
+        <li>Containers vs VM </li>
         <li>Shaker</li>
+        <li>OpenStack</li>
         <li>Let's automate ! </li>
         <li>Démonstration</li>
         </ul>
@@ -85,7 +87,7 @@ URL: https://code.google.com/p/io-2012-slides
   </slide>
 <slide>
     <hgroup>
-      <h2>Automatisation</h2>
+      <h2>Cloud privé</h2>
       <h3>IRCAD</h3>
     </hgroup>
     <article class="flexbox vcenter ">
@@ -123,7 +125,37 @@ URL: https://code.google.com/p/io-2012-slides
   <img src="images/0mq.gif" class="reflect" alt="Description" style="width:300px;height:100px" title="Description">
     </article>
   </slide>
+
 <slide>
+    <hgroup>
+      <h2>SALTSTACK</h2>
+      <h3>Et ses concurrents...</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+<table style="margin-bottom:200px">
+        <tr>
+          <th></th><th>Saltstack</th><th>Puppet</th><th>Chef</th><th>cfEngine</th>
+        </tr>
+        <tr>
+          <td>Fichier de conf</td><td class="highlight">YAML</td><td >Ruby*</td><td>Ruby</td><td>cf lang</td>
+        </tr>
+        <tr>
+          <td>Monté en charge</td><td class="highlight">Natif</td><td>non</td><td>non</td><td  class="highlight">Natif</td>
+        </tr>
+        <tr>
+          <td>Langage</td><td  class="highlight" >Python</td><td>Ruby</td><td>Ruby</td><td>C</td>
+        </tr>
+        <tr>
+          <td>Simplicité</td><td  class="highlight">Très</td><td>moyen</td><td>Ruby guru</td><td>:'(</td>
+        </tr>
+        <tr>
+          <td>Prix</td><td  class="highlight">Gratuit</td><td>Enterprise</td><td>Enterprise</td><td>Enterprise</td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+
+ <slide>
     <hgroup>
       <h2>SALTSTACK</h2>
       <h3>Pour vos serveurs mais aussi pour le reste !</h3>
@@ -245,36 +277,61 @@ Config:
    <img src="images/saltstack_grains_pillars.png" class="reflect" alt="Description" title="Description" style="margin-bottom:150px">
       </article>
 </slide>
-
+<slide class="fill nobackground" style="background-image: url(images/ct.jpg)">
+    <hgroup>
+      <h2>Container & VM</h2>
+ </hgroup>
+    <footer class="source black"><b>source http://maritime-connector.com/ship/agnes-rickmers-9289972/</b></footer>
+</slide>
 <slide>
     <hgroup>
-      <h2>VM & Cantainer</h2>
+      <h2>Container & VM</h2>
     </hgroup>
     <article class="flexbox vcenter ">
         <img src="images/ct_vm.jpg" class="reflect" alt="Description" title="Description" style="margin-bottom:100px">
     </article>
+    <footer class="source black"><b>source http://blog.ippon.fr/2014/04/14/docker-presentation-part-1/</b></footer>
+
   </slide>
 
 
 <slide>
     <hgroup>
-      <h2>VM & Cantainer</h2>
+      <h2>Container & VM</h2>
       <h3>Performance réseaux</h3>
     </hgroup>
     <article class="flexbox vcenter ">
         <img src="images/vmvsct_net.png" class="reflect" alt="Description" title="Description" style="margin-bottom:100px">
     </article>
+    <footer class="source black"><b>source https://openvz.org/Performance </b></footer>
   </slide>
 
 <slide>
     <hgroup>
-      <h2>VM & Cantainer</h2>
+      <h2>Container & VM  </h2>
       <h3>Temps de latence</h3>
     </hgroup>
     <article class="flexbox vcenter ">
         <img src="images/vmvsct_response.png" class="reflect" alt="Description" title="Description" style="margin-bottom:100px">
     </article>
+    <footer class="source black"><b>source https://openvz.org/Performance </b></footer>
   </slide>
+<slide>
+    <hgroup>
+      <h2>Container & VM  </h2>
+      <h3>Un fan de Container...mais !</h3>
+    </hgroup>
+    <article class="flexbox ">
+    <ul>
+        <li>CT ne replace pas une VM</li>
+        <li>Un CT, c'est limité</li>
+        <li>Déploiement de service</li>
+        <li>LXC(Docker) ou OpenVZ</li>
+      </ul></article>
+    
+
+  </slide>
+
 
 
 <slide>
@@ -288,6 +345,7 @@ Config:
         <li>Un couteau suisse</li>
         <li>IHM</li>
         <li>Modulaire et évolutif</li>
+        <li>Orchestrez votre cloud privé différemment</li>
       </ul>
         <img src="images/suisse.png" class="reflect" alt="Description" title="Description">
     </article>
@@ -313,7 +371,7 @@ Config:
 <slide>
     <hgroup>
       <h2>Shaker</h2>
-      <h3>Le coeur>
+      <h3>Le coeur</h3>
     </hgroup>
     <article class="flexbox vcenter ">
         <img src="images/shaker2.png" class="reflect" alt="Description" title="Description"style="margin-bottom:150px">
@@ -341,7 +399,7 @@ Config:
 
 <slide>
     <hgroup>
-      <h2>SALTSTACK</h2>
+      <h2>Shaker</h2>
       <h3>La web application</h3>
     </hgroup>
     <article class="flexbox vcenter ">
@@ -541,6 +599,16 @@ COND:
     </article>
   </slide>
 
+<slide>
+    <hgroup>
+    <h2>OpenStack</h2>
+      <h3>Et Git aussi</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+        <img src="images/salt_shaker_openstack.png" class="reflect" alt="Description" title="Description"style="margin-bottom:150px">
+    </article>
+  </slide>
+
 
 <slide>
     <hgroup>
@@ -575,6 +643,11 @@ COND:
     <hgroup>
     </hgroup>
     <footer class="source black"><b>github.com/zimski/shaker</b></footer>
+</slide>
+<slide class="fill nobackground" style="background-image: url(images/hireme.jpg)">
+    <hgroup>
+</hgroup>
+    <footer class="source black" style="font-size:40px; color:white !important" ><b>CHADDA . CHAKIB @ GMAIL . COM</b></footer>
 </slide>
   <slide hidden>
     Hidden slides are left out of the presentation.

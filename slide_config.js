@@ -1,8 +1,8 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'SHAKER<br>CMS d\'automatisation',
-    subtitle: 'Boost your code',
+    title: 'Automatisation &<br> dépoloiement de services',
+    subtitle: '',
     //eventInfo: {
     //  title: 'Google I/O',
     //  date: '6/x/2013'
