@@ -78,7 +78,7 @@ URL: https://code.google.com/p/io-2012-slides
     <article>
       <ul>
         <li>Des recettes à tout faire </li>
-        <li>Une maintenance à faible coût et évolutif </li>
+        <li>Une maintenance à faible coût et évolutive </li>
         <li>Une IHM, ça aide !<li>
         <li>Rapide et sûr</li>
 
@@ -112,6 +112,35 @@ URL: https://code.google.com/p/io-2012-slides
 <slide>
     <hgroup>
       <h2>SALTSTACK</h2>
+      <h3>Et ses concurrents...</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+<table style="margin-bottom:200px">
+        <tr>
+          <th></th><th>Saltstack</th><th>Puppet</th><th>Chef</th><th>cfEngine</th>
+        </tr>
+        <tr>
+          <td>Fichier de conf</td><td class="highlight">YAML</td><td >Ruby*</td><td>Ruby</td><td>Cf lang</td>
+        </tr>
+        <tr>
+          <td>Monté en charge</td><td class="highlight">Natif</td><td>Non</td><td>Non</td><td  class="highlight">Natif</td>
+        </tr>
+        <tr>
+          <td>Langage</td><td  class="highlight" >Python</td><td>Ruby</td><td>Ruby</td><td>C</td>
+        </tr>
+        <tr>
+          <td>Simplicité</td><td  class="highlight">Bon</td><td>Moyen</td><td>Ruby guru</td><td>:'(</td>
+        </tr>
+        <tr>
+          <td>Prix</td><td  class="highlight">Gratuit</td><td>Enterprise</td><td>Enterprise</td><td>Enterprise</td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+
+<slide>
+    <hgroup>
+      <h2>SALTSTACK</h2>
       <h3> Technologies</h3>
     </hgroup>
     <article class="flexbox">
@@ -123,35 +152,6 @@ URL: https://code.google.com/p/io-2012-slides
       </ul>
   <img src="images/python.png" class="reflect" alt="Description" style="width:300px;height:100px" title="Description">
   <img src="images/0mq.gif" class="reflect" alt="Description" style="width:300px;height:100px" title="Description">
-    </article>
-  </slide>
-
-<slide>
-    <hgroup>
-      <h2>SALTSTACK</h2>
-      <h3>Et ses concurrents...</h3>
-    </hgroup>
-    <article class="flexbox vcenter ">
-<table style="margin-bottom:200px">
-        <tr>
-          <th></th><th>Saltstack</th><th>Puppet</th><th>Chef</th><th>cfEngine</th>
-        </tr>
-        <tr>
-          <td>Fichier de conf</td><td class="highlight">YAML</td><td >Ruby*</td><td>Ruby</td><td>cf lang</td>
-        </tr>
-        <tr>
-          <td>Monté en charge</td><td class="highlight">Natif</td><td>non</td><td>non</td><td  class="highlight">Natif</td>
-        </tr>
-        <tr>
-          <td>Langage</td><td  class="highlight" >Python</td><td>Ruby</td><td>Ruby</td><td>C</td>
-        </tr>
-        <tr>
-          <td>Simplicité</td><td  class="highlight">Très</td><td>moyen</td><td>Ruby guru</td><td>:'(</td>
-        </tr>
-        <tr>
-          <td>Prix</td><td  class="highlight">Gratuit</td><td>Enterprise</td><td>Enterprise</td><td>Enterprise</td>
-        </tr>
-      </table>
     </article>
   </slide>
 
@@ -601,7 +601,7 @@ COND:
 
 <slide>
     <hgroup>
-    <h2>OpenStack</h2>
+    <h2>OpenStack Orchestration</h2>
       <h3>Et Git aussi</h3>
     </hgroup>
     <article class="flexbox vcenter ">
