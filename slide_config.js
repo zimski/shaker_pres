@@ -1,7 +1,7 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Automatisation &<br> dépoloiement de services',
+    title: 'Automatisation &<br> déploiement de services',
     subtitle: '',
     //eventInfo: {
     //  title: 'Google I/O',

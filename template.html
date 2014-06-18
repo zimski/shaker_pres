@@ -78,7 +78,7 @@ URL: https://code.google.com/p/io-2012-slides
     <article>
       <ul>
         <li>Des recettes à tout faire </li>
-        <li>Une maintenance à faible coût et évolutive </li>
+        <li>Une maintenance à faible coût et évolutif </li>
         <li>Une IHM, ça aide !<li>
         <li>Rapide et sûr</li>
 
@@ -112,35 +112,6 @@ URL: https://code.google.com/p/io-2012-slides
 <slide>
     <hgroup>
       <h2>SALTSTACK</h2>
-      <h3>Et ses concurrents...</h3>
-    </hgroup>
-    <article class="flexbox vcenter ">
-<table style="margin-bottom:200px">
-        <tr>
-          <th></th><th>Saltstack</th><th>Puppet</th><th>Chef</th><th>cfEngine</th>
-        </tr>
-        <tr>
-          <td>Fichier de conf</td><td class="highlight">YAML</td><td >Ruby*</td><td>Ruby</td><td>Cf lang</td>
-        </tr>
-        <tr>
-          <td>Monté en charge</td><td class="highlight">Natif</td><td>Non</td><td>Non</td><td  class="highlight">Natif</td>
-        </tr>
-        <tr>
-          <td>Langage</td><td  class="highlight" >Python</td><td>Ruby</td><td>Ruby</td><td>C</td>
-        </tr>
-        <tr>
-          <td>Simplicité</td><td  class="highlight">Bon</td><td>Moyen</td><td>Ruby guru</td><td>:'(</td>
-        </tr>
-        <tr>
-          <td>Prix</td><td  class="highlight">Gratuit</td><td>Enterprise</td><td>Enterprise</td><td>Enterprise</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-<slide>
-    <hgroup>
-      <h2>SALTSTACK</h2>
       <h3> Technologies</h3>
     </hgroup>
     <article class="flexbox">
@@ -152,6 +123,35 @@ URL: https://code.google.com/p/io-2012-slides
       </ul>
   <img src="images/python.png" class="reflect" alt="Description" style="width:300px;height:100px" title="Description">
   <img src="images/0mq.gif" class="reflect" alt="Description" style="width:300px;height:100px" title="Description">
+    </article>
+  </slide>
+
+<slide>
+    <hgroup>
+      <h2>SALTSTACK</h2>
+      <h3>Et ses concurrents...</h3>
+    </hgroup>
+    <article class="flexbox vcenter ">
+<table style="margin-bottom:200px">
+        <tr>
+          <th></th><th>Saltstack</th><th>Puppet</th><th>Chef</th><th>cfEngine</th>
+        </tr>
+        <tr>
+          <td>Fichier de conf</td><td class="highlight">YAML</td><td >Ruby*</td><td>Ruby</td><td>cf lang</td>
+        </tr>
+        <tr>
+          <td>Monté en charge</td><td class="highlight">Natif</td><td>non</td><td>non</td><td  class="highlight">Natif</td>
+        </tr>
+        <tr>
+          <td>Langage</td><td  class="highlight" >Python</td><td>Ruby</td><td>Ruby</td><td>C</td>
+        </tr>
+        <tr>
+          <td>Simplicité</td><td  class="highlight">Très</td><td>moyen</td><td>Ruby guru</td><td>:'(</td>
+        </tr>
+        <tr>
+          <td>Prix</td><td  class="highlight">Gratuit</td><td>Enterprise</td><td>Enterprise</td><td>Enterprise</td>
+        </tr>
+      </table>
     </article>
   </slide>
 
@@ -319,7 +319,7 @@ Config:
 <slide>
     <hgroup>
       <h2>Container & VM  </h2>
-      <h3>Un fan de Container...mais !</h3>
+      <h3>Un fan de Container... Mais !</h3>
     </hgroup>
     <article class="flexbox ">
     <ul>
@@ -421,7 +421,7 @@ Config:
       <h3>Fichier d'environnement</h3>
     </hgroup>
     <article>
-    <ul> <li>Il représente nos variables dont on aura besoin</li> <li>Le fichier de sortie doit être au format YAML (moteur de template mako) </li></ul>
+    <ul> <li>Il représente nos variables dont nous aurons besoin</li> <li>Le fichier de sortie doit être au format YAML (moteur de template mako) </li></ul>
       <pre class="prettyprint" data-lang="python">
 <%
   import redis
@@ -442,7 +442,7 @@ script:
       <h3>Fichier Script</h3>
     </hgroup>
     <article>
-    <ul> <li>Il représente nos instructions à exécuter</li> <li>Le fichier est dabord mis en forme (template) avant d'être exécuté (Mako) </li></ul>
+    <ul> <li>Il représente nos instructions à exécuter</li> <li>Le fichier est d'abord mis en forme (template) avant d'être exécuté (Mako) </li></ul>
       <pre class="prettyprint" data-lang="bash">
 apt-get update
 apt-get install curl
@@ -570,11 +570,11 @@ COND:
     </hgroup>
     <article>
       <ul>
-        <li>Lancement de taches parallèles ou séquentielles</li>
+        <li>Lancement de tâches parallèles ou séquentielles</li>
         <li> Web app:</li>
         <ul>
             <li>Flux en temps réel affiché dans la console</li>
-            <li>Éditeur integré du code Shaker</li>
+            <li>Éditeur intégré du code Shaker</li>
             <li>Exécution et débogage du code  </li>
             <li>Moteur de création de plugin intégré</li>
         </ul>
@@ -601,7 +601,7 @@ COND:
 
 <slide>
     <hgroup>
-    <h2>OpenStack Orchestration</h2>
+    <h2>OpenStack</h2>
       <h3>Et Git aussi</h3>
     </hgroup>
     <article class="flexbox vcenter ">
@@ -649,12 +649,25 @@ COND:
 </hgroup>
     <footer class="source black" style="font-size:40px; color:white !important" ><b>CHADDA . CHAKIB @ GMAIL . COM</b></footer>
 </slide>
+<slide class="fill nobackground" style="background-image: url(images/hireme.jpg)">
+    <hgroup>
+</hgroup>
+    <footer class="source black" style="font-size:40px; color:white !important" ><b>CHADDA . CHAKIB @ GMAIL . COM</b></footer>
+</slide>
+
   <slide hidden>
     Hidden slides are left out of the presentation.
   </slide>
   <slide class="backdrop"></slide>
 
 </slides>
+  <slide hidden>
+    Hidden slides are left out of the presentation.
+  </slide>
+  <slide class="backdrop"></slide>
+
+</slides>
+
 
 <script>
 var _gaq = _gaq || [];
@@ -666,6 +679,21 @@ _gaq.push(['_trackPageview']);
   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
+function print() {
+    $("body").css("background", "none");
+    $("article").removeClass("far-past");
+    $("article").removeClass("past");
+    $("article").removeClass("current");
+    $("article").removeClass("next");
+    $("article").removeClass("far-next");
+    $("*.to-build").removeClass("to-build");
+    $("article").css("display", "block");
+    $("article").css("top", "0");
+    $("article").css("left", "0");
+    $("article").css("margin", "0 0 9em 0");
+    $("article").css("position", "relative");
+}
+
 </script>
 
 <!--[if IE]>
