@@ -44,15 +44,14 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
       <ul>
-        <li>L’administration système </li>
-        <li>L'automatisation </li>
-        <li>Cloud privé </li>
+        <li>L’ IRCAD</li>
+        <li>Missions </li>
+        <li>Déroulement du stage</li>
         <li>SALTSTACK </li>
         <li>Containers vs VM </li>
         <li>Shaker</li>
         <li>OpenStack</li>
         <li>Let's automate ! </li>
-        <li>Démonstration</li>
         </ul>
       </ul>
     </article>
@@ -60,17 +59,62 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2> L’administration système </h2>
+      <h2> L’IRCAD </h2>
+      <h3> Institut de Recherche contre les Cancers de l'Appareil Digestif</h3>
     </hgroup>
     <article>
       <ul>
-        <li>Mettre en place et configurer des services </li>
+        <li>Identité</li>
+        <ul>
+            <li>Fondateur: Pr Jacques Marescaux</li>
+            <li>Ouverture: 1994</li>
+        </ul>
+      <li>Missions</li>
+        <ul>
+            <li>Centre de recherche et de formation </li>
+            <li>Biocluster: Nid à start-up bio-medical</li>
+            <li>Chirurgie non invasives</li>
+            <li>4000 chirurgiens formés chaque année</li>
+        </ul></ul>
+
+    <img src="images/operation-IRCAD.jpg" class="reflect" style="height:200px;width:300px;position:relative;top:-350px;left:680px" alt="Description" title="Description">
+    <img src="images/class-IRCAD.jpg" class="reflect" style="height:200px;width:300px;position:relative;top:-140px;left:372px"alt="Description" title="Description">
+    <div style="position:relative;top:-200px">
+    <img src="images/ircad_fr.png"  style="float:left;height:70px;width:200px;margin-right:10px" >
+    <img src="images/ircad_bz.png"  style="float:left;height:70px;width:200px;margin-right:10px" >
+    <img src="images/ircad_tw.png"  style="float:left;height:70px;width:200px" >
+    </div>
+    </article>
+  </slide>
+<slide>
+    <hgroup>
+      <h2> Missions </h2>
+    </hgroup>
+    <article>
+     <h3>Missions de base</h3>   
+      <ul>
+        <li>Séléction et déploiement d'outils de gestion de configuration</li>
+        <li>Mise en place de scénarios d'automatisations</li>
       </ul>
-    <img src="images/admin_1.jpg" class="reflect" alt="Description" title="Description">
+     <h3>Initiatives personnelles</h3>   
+        <ul>
+        <li>Développement de <b>Shaker</b>, projet open source</li>
+        <li>Etude des de la virtualisation à container</li>
+        <li>introduction des containers dans le processus d'automatisation</li>
+      </ul>
 
     </article>
   </slide>
-  <slide>
+<slide>
+    <hgroup>
+      <h2>Déroulement du stage</h2>
+    </hgroup>
+    <article class="flexbox vcenter ">
+    <img src="images/déroulement de stage.png" class="reflect"style="width:1000px" alt="Description" title="Description" style="position:relative;top:-50px">
+    </article>
+  </slide>
+
+    <slide>
     <hgroup>
       <h2> L'automatisation, notre sauveur ! </h2>
       <h3> ..... mais on en veut plus ! </h3>
@@ -243,40 +287,6 @@ apache:
       </article>
 </slide>
 
-
-
-<slide>
-    <hgroup>
-      <h2>SALTSTACK</h2>
-      <h3>Pillars... Top Secret !</h3>
-    </hgroup>
-    <article class="flexbox vcenter ">
-    <pre class="prettyprint" data-lang="pillar.sls">
-conf_data:
-  root_pass: "securePassw0rd!!%"
-  root_email: contact@boite.fr
-  Blabla: foufou
- </pre>
-
-<pre class="prettyprint" data-lang="conf_contact.sls">
-Config:
- File.replace:
-  - name: /etc/config
-  - pattern: "contact :*"
-  - replace: "contact : <b>{% pillar['conf_data']['root_email'] %}</b>"
-</pre>
-    </article>
-</slide>
-
-<slide>
-    <hgroup>
-      <h2>SALTSTACK</h2>
-      <h3>Mécanisme</h3>
-    </hgroup>
-    <article class="flexbox vcenter ">
-   <img src="images/saltstack_grains_pillars.png" class="reflect" alt="Description" title="Description" style="margin-bottom:150px">
-      </article>
-</slide>
 <slide class="fill nobackground" style="background-image: url(images/ct.jpg)">
     <hgroup>
       <h2>Container & VM</h2>
@@ -417,84 +427,6 @@ Config:
 </slide>
 <slide>
     <hgroup>
-      <h2>Le langage Shaker</h2>
-      <h3>Fichier d'environnement</h3>
-    </hgroup>
-    <article>
-    <ul> <li>Il représente nos variables dont nous aurons besoin</li> <li>Le fichier de sortie doit être au format YAML (moteur de template mako) </li></ul>
-      <pre class="prettyprint" data-lang="python">
-<%
-  import redis
-  r = redis.StrictRedis()
-  data = r.hgetall('DB:Manage_vm:'+argv[0])
-%>
-script:
-    host: ${data['ip']}
-    user: root
-    password: ${data['pass']}
-</pre>
-    </article>
-
-</slide>
-<slide>
-    <hgroup>
-      <h2>Le langage Shaker</h2>
-      <h3>Fichier Script</h3>
-    </hgroup>
-    <article>
-    <ul> <li>Il représente nos instructions à exécuter</li> <li>Le fichier est d'abord mis en forme (template) avant d'être exécuté (Mako) </li></ul>
-      <pre class="prettyprint" data-lang="bash">
-apt-get update
-apt-get install curl
-<b>echo "${env['global_var']['hostname']}" > /etc/hostname</b>
-/etc/init.d/hostname start
-hostname ${env['global_var']['hostname']}
-<b>curl -k -L http://bootstrap.saltstack.org | sh</b>
-hostname
-<b>$$ send_file.send file_conf_salt_minion</b>
-## send hosts file 
-$$ send_file.send file_hosts
-/etc/init.d/salt-minion restart
-echo "helloo"
-</pre>
-    </article>
-
-</slide>
-<slide class="fill nobackground" style="background-image: url(images/shaker_edit.png); background-size: 100% 75%">
-    <hgroup>
-    </hgroup>
-</slide>
-
-
-<slide>
-    <hgroup>
-      <h2>Le langage Shaker</h2>
-      <h3>Les modules</h3>
-    </hgroup>
-    <article>
-    <ul> <li>Un outil puissant et facile à implémenter</li></ul>
-      <pre class="prettyprint" data-lang="bash (script)">
-hostname ${env['global_var']['hostname']}
-## send hosts file 
-<b>$$ send_file.send file_hosts</b>
-</pre>
-      <pre class="prettyprint" data-lang="yaml (ENV)">
-<b>file_hosts:
-    host:
-        ip: ${data['ip']}
-        username: root
-        password: ${data['pass']}
-    template:
-        file_name: /root/sgod/config_files/hosts
-        dest_path: "/etc/hosts"
-        machine_name: ${data['host']}</b>
-</pre>
- 
-    </article>
-
-</slide>
-<slide>
-    <hgroup>
       <h2> Le langage Shaker</h2>
       <h3> Problématique</h3>
     </hgroup>
@@ -566,24 +498,6 @@ COND:
 <slide>
     <hgroup>
       <h2> Shaker </h2>
-      <h3> Et plus encore</h3> 
-    </hgroup>
-    <article>
-      <ul>
-        <li>Lancement de tâches parallèles ou séquentielles</li>
-        <li> Web app:</li>
-        <ul>
-            <li>Flux en temps réel affiché dans la console</li>
-            <li>Éditeur intégré du code Shaker</li>
-            <li>Exécution et débogage du code  </li>
-            <li>Moteur de création de plugin intégré</li>
-        </ul>
-      </ul>
-    </article>
-  </slide>
-<slide>
-    <hgroup>
-      <h2> Shaker </h2>
       <h3> Et demain ...</h3>
     </hgroup>
     <article>
@@ -631,6 +545,30 @@ COND:
         <img src="images/automate2.png" class="reflect" alt="Description" title="Description"style="margin-bottom:150px">
     </article>
   </slide>
+
+
+
+<slide>
+    <hgroup>
+      <h2>Bilan</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <h3>Solutions</h3>
+      <ul>
+        <li>Répondent aux besoins</li>
+        <li>Evolutives</li>
+        <li>Open source</li>
+    </ul>
+    <h3>Apport personnel</h3>
+    <ul>
+        <li>Des téchnologies diverses</li>
+        <li>Une découverte du métier du SysOp / DEVOPS</li>
+        <li>Une expérience humaine</li>
+    </ul>
+     </article>
+  </slide>
+
 
 
 
